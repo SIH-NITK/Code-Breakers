@@ -1,33 +1,54 @@
 {% extends 'CropAnalyserApp/base.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Welcome</h1>
-    <form method="POST">
-        Select Month:
-        <select id="month">
-            <option>January</option>
+<div class="container" id="form">
+  <div class="row">
+      <div id="upload" class="col-sm-5">
+        <label for="avatar">Upload a file:</label>
+
+        <input type="file"
+               id="avatar" name="avatar"
+               accept="image/png, image/jpeg">
+        
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-5">
+        <form method="POST">
+            Select Month:<br>
+            <select id="month">
+                <option>January</option>
+                
+            </select><br>
+            Select Year:<br>
+            <select name="year">
+                <option>2018</option>
+                <option>2019</option>
+            </select><br>
+            Select State:<br>
+            <select name="state">
+                <option>Karnataka</option>
+            </select><br>
+            Select District:<br>
+            <select name="district">
+                <option>Mangalore</option>
+            </select><br>
             
-        </select>
-        Select Year:
-        <select name="year">
-            <option>2018</option>
-            <option>2019</option>
-        </select>
-        Select State:
-        <select name="state">
-            <option>Karnataka</option>
-        </select>
-        Select District:
-        <select name="district">
-            <option>Mangalore</option>
-        </select>
-        <input type="radio" name="masking_method" value="Self Select Farmland"> Self Select Farmland
-        <input type="radio" name="masking_method" value="Auto Detect Farmland"> Auto Detect Farmland
-        <input type="submit" value="Submit">
-
-
-    </form>
+        </form>
+    </div>
+    <div id="center" class="row">
+        <div  class="col-sm-12">
+            <input type="radio" name="masking_method" value="Self Select Farmland"> Self Select Farmland
+            <input type="radio" name="masking_method" value="Auto Detect Farmland"> Auto Detect Farmland
+            
+        </div>
+        <div class="col-sm-12">
+            <div class="submit"><input type="submit" value="Submit" ></div>
+        </div>
+        
+        </div>
+    
+  </div>
+    
 </div>
 
 <script type="text/javascript">

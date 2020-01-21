@@ -14,11 +14,47 @@ header{
     font-weight: bolder;
     font-size: 30px;
 }
-
-form{
+#form{
     margin: 20px;
+    align-items: center;
+    border: 2px solid black;
     padding: 20px;
-    border: 2px solid skyblue;
+    margin-left: 60px;
+}
+form{
+   
+    padding: 20px;
+    font-size: medium;
+    font-weight: bold;
+    
     border-radius: 5px;
 }
 
+select {
+    padding: 5px;
+}
+.submit{
+   text-align: center;
+}
+
+#center{
+    text-align: center;
+    font-weight: bold;
+}
+
+#center input[type=submit]{
+    padding: 5px;
+    width: 50%;
+    background-color: rgb(25, 211, 202);
+}
+label {
+    display: block;
+    
+}
+#upload{
+    font-weight: bolder;
+    font-size: medium;
+}
+.line{
+    border-right: 2px solid black;
+}
