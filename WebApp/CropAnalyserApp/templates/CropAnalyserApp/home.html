@@ -1,5 +1,5 @@
 {% extends 'CropAnalyserApp/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 <div class="container" id="form">
   <div class="row">
@@ -14,26 +14,21 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-5">
         <form method="POST">
-            Select Month:<br>
-            <select id="month">
-                <option>January</option>
-                
-            </select><br>
-            Select Year:<br>
-            <select name="year">
-                <option>2018</option>
-                <option>2019</option>
-            </select><br>
-            Select State:<br>
-            <select name="state">
-                <option>Karnataka</option>
-            </select><br>
-            Select District:<br>
-            <select name="district">
-                <option>Mangalore</option>
-            </select><br>
-            
-        </form>
+            <label>Select From Date</label>
+        <input type="date" name="from_date">
+        <label>Select To Date</label>
+        <input type="date" name="to_date">
+        <label>State:</label>
+            <select id="state" name="state">
+                <option value="000">-Select State-</option>
+            </select>
+        <br />
+        <label>District:</label>
+            <select id="district" name="district">
+                <option value="000">-Select District-</option>
+            </select>
+        <br />
+    </form>
     </div>
     <div id="center" class="row">
         <div  class="col-sm-12">
@@ -50,33 +45,5 @@
   </div>
     
 </div>
-
-<script type="text/javascript">
-
-    var d = new Date();
-    var monthArray = new Array();
-    monthArray[1] = "February";
-    monthArray[2] = "March";
-    monthArray[3] = "April";
-    monthArray[4] = "May";
-    monthArray[5] = "June";
-    monthArray[6] = "July";
-    monthArray[7] = "August";
-    monthArray[8] = "September";
-    monthArray[9] = "October";
-    monthArray[10] = "November";
-    monthArray[11] = "December";
-
-    for(m = 1; m <= 11; m++) {
-        var optn = document.createElement("OPTION");
-        optn.text = monthArray[m];
-        optn.value = (m+1);
-        document.getElementById('month').options.add(optn);
-        console.log(document.getElementById('month'))
-    }
-
-
-
-</script>
-
+<script type="text/javascript" src='{% static "/js/states_and_districts.js" %}'></script>
 {% endblock %}
