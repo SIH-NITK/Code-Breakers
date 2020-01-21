@@ -1,61 +1,27 @@
 {% extends 'CropAnalyserApp/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 <div class="container">
     <h1>Welcome</h1>
     <form method="POST">
-        Select Month:
-        <select id="month">
-            <option>January</option>
-            
-        </select>
-        Select Year:
-        <select name="year">
-            <option>2018</option>
-            <option>2019</option>
-        </select>
-        Select State:
-        <select name="state">
-            <option>Karnataka</option>
-        </select>
-        Select District:
-        <select name="district">
-            <option>Mangalore</option>
-        </select>
+        <label>Select From Date</label>
+        <input type="date" name="from_date">
+        <label>Select To Date</label>
+        <input type="date" name="to_date">
+        <label>State:</label>
+            <select id="state" name="state">
+                <option value="000">-Select State-</option>
+            </select>
+        <br />
+        <label>District:</label>
+            <select id="district" name="district">
+                <option value="000">-Select District-</option>
+            </select>
+        <br />
         <input type="radio" name="masking_method" value="Self Select Farmland"> Self Select Farmland
         <input type="radio" name="masking_method" value="Auto Detect Farmland"> Auto Detect Farmland
         <input type="submit" value="Submit">
-
-
     </form>
 </div>
-
-<script type="text/javascript">
-
-    var d = new Date();
-    var monthArray = new Array();
-    monthArray[1] = "February";
-    monthArray[2] = "March";
-    monthArray[3] = "April";
-    monthArray[4] = "May";
-    monthArray[5] = "June";
-    monthArray[6] = "July";
-    monthArray[7] = "August";
-    monthArray[8] = "September";
-    monthArray[9] = "October";
-    monthArray[10] = "November";
-    monthArray[11] = "December";
-
-    for(m = 1; m <= 11; m++) {
-        var optn = document.createElement("OPTION");
-        optn.text = monthArray[m];
-        optn.value = (m+1);
-        document.getElementById('month').options.add(optn);
-        console.log(document.getElementById('month'))
-    }
-
-
-
-</script>
-
+<script type="text/javascript" src='{% static "/js/states_and_districts.js" %}'></script>
 {% endblock %}
