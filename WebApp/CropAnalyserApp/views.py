@@ -9,3 +9,4 @@ def home(request):
 
     # return HttpResponse('Welcome')
     return render(request,'CropAnalyserApp/home.html')
+

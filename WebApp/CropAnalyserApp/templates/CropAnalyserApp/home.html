@@ -1,28 +1,61 @@
 {% extends 'CropAnalyserApp/base.html' %}
 
+{% block content %}
+<div class="container">
+    <h1>Welcome</h1>
+    <form method="POST">
+        Select Month:
+        <select id="month">
+            <option>January</option>
+            
+        </select>
+        Select Year:
+        <select name="year">
+            <option>2018</option>
+            <option>2019</option>
+        </select>
+        Select State:
+        <select name="state">
+            <option>Karnataka</option>
+        </select>
+        Select District:
+        <select name="district">
+            <option>Mangalore</option>
+        </select>
+        <input type="radio" name="masking_method" value="Self Select Farmland"> Self Select Farmland
+        <input type="radio" name="masking_method" value="Auto Detect Farmland"> Auto Detect Farmland
+        <input type="submit" value="Submit">
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SIH</title>
-    <link rel="stylesheet" type="text/css" href='{% static "/css/home.css" %}'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <!--<h1>Welcome</h1>-->
-    <header>
-        <div class="header-left">Logo</div>
-    </header>
-    <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-lg">Large button</button>
+    </form>
+</div>
 
-    </div>
-</body>
-</html>
+<script type="text/javascript">
 
+    var d = new Date();
+    var monthArray = new Array();
+    monthArray[1] = "February";
+    monthArray[2] = "March";
+    monthArray[3] = "April";
+    monthArray[4] = "May";
+    monthArray[5] = "June";
+    monthArray[6] = "July";
+    monthArray[7] = "August";
+    monthArray[8] = "September";
+    monthArray[9] = "October";
+    monthArray[10] = "November";
+    monthArray[11] = "December";
+
+    for(m = 1; m <= 11; m++) {
+        var optn = document.createElement("OPTION");
+        optn.text = monthArray[m];
+        optn.value = (m+1);
+        document.getElementById('month').options.add(optn);
+        console.log(document.getElementById('month'))
+    }
+
+
+
+</script>
+
+{% endblock %}

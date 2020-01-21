@@ -15,8 +15,10 @@ header{
     font-size: 30px;
 }
 
-.buttons{
+form{
+    margin: 20px;
     padding: 20px;
-    
-
+    border: 2px solid skyblue;
+    border-radius: 5px;
 }
+
