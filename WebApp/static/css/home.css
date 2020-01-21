@@ -1,3 +1,21 @@
 body{
-    background: #434343;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: black;
+    color: whitesmoke;
+    padding: 20px;
+
+}
+
+.header-left{
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.buttons{
+    padding: 20px;
+    
 }
