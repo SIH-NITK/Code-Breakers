@@ -103,6 +103,7 @@ def generate_crop_cycles(dirname):
             if(val_diff[last_index:max(1,ind)].min() < harvest):
                 d, m, y = determine_date(timeline[1:][ind-1])
                 d = calculate_date(d, val_diff[ind-1], val_diff[ind])
+                print('((((((((((((((((((((((((((((((((((((((((((3))))))))))))))))))))))))))))))))))))))))))',d,m,y)
                 sowing_dates[ind] = datetime.strptime("{d}/{m}/{y}".format(d=d, m=m, y=y), '%d/%m/%Y')
                 last_index = ind
         if((val_diff[ind]<0)&(val_diff[min(47,ind-1)]>0)):
@@ -162,8 +163,9 @@ def home(request):
             return render(request,'CropAnalyserApp/home.html')
         
         else:
-            # generate_crop_cycles('/home/shashank/SIH/Code-Breakers/WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/')
+            generate_crop_cycles('/home/saurabh/Desktop/SIH/Dataset/Clipped_NDVI')
             data_to_frontend = get_season_details(dicti)
+            print('##################################',data_to_frontend)
             for i in range(len(data_to_frontend['crop_cycle'])):
                 data_to_frontend['crop_cycle'][i]['start_date']=data_to_frontend['crop_cycle'][i]['start_date'].strftime("%Y/%m/%d")
                 data_to_frontend['crop_cycle'][i]['end_date']=data_to_frontend['crop_cycle'][i]['end_date'].strftime("%Y/%m/%d")
@@ -208,13 +210,13 @@ def app_home(request):
         from_date=from_date.split('-')
         to_date=to_date.split('-')
         print('((((((((((((((((((((((((((((((9))))))))))))))))))))))))))))))',from_date,to_date)
-        dict={
+        dicti={
             'starting_month': from_date[1],
             'starting_year' : from_date[2],
             'end_month' : to_date[1],
             'end_year' : to_date[2]
         }
-        print(dict)
+        print(dicti)
         if masking_method=="Self Select Farmland":
 
             #return different page
@@ -222,7 +224,7 @@ def app_home(request):
         
         else:
             # generate_crop_cycles('/home/shashank/SIH/Code-Breakers/WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/')
-            data_to_frontend = get_season_details(dict)
+            data_to_frontend = get_season_details(dicti)
             for i in range(len(data_to_frontend['crop_cycle'])):
                 data_to_frontend['crop_cycle'][i]['start_date']=data_to_frontend['crop_cycle'][i]['start_date'].strftime("%Y/%m/%d")
                 data_to_frontend['crop_cycle'][i]['end_date']=data_to_frontend['crop_cycle'][i]['end_date'].strftime("%Y/%m/%d")
