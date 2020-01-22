@@ -1,13 +1,9 @@
 import 'dart:io';
 
-import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
-import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-import 'package:path_provider/path_provider.dart';
 
 class Singleton {
   static Singleton _instance = new Singleton._();
-  static PersistCookieJar cookieJar;
   Dio dio;
 
   Singleton._() {
@@ -18,18 +14,14 @@ class Singleton {
       receiveTimeout: 100000,
       headers: {
         HttpHeaders.userAgentHeader: "dio",
+        HttpHeaders.contentTypeHeader: "application/json"
       },
     );
-    if(cookieJar != null) {
-      dio.interceptors.add(CookieManager(cookieJar));
-    }
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions requestOptions) {
         print("Network request");
         print(requestOptions.uri);
         print(requestOptions.data.toString());
-        print(cookieJar?.loadForRequest(requestOptions.uri));
-        requestOptions.headers[HttpHeaders.cookieHeader] = cookieJar?.loadForRequest(requestOptions.uri);
         print(requestOptions.headers);
       },  
       onResponse: (Response response) {
@@ -46,15 +38,5 @@ class Singleton {
     ));
   }
 
-  static Future<String> getDirectory() async {
-    Directory tempDir = await getTemporaryDirectory();
-    return tempDir.path;
-  }
-
-  static Singleton get instance => _instance;
-  static Future initialize() async {
-    String tempPath = await getDirectory();
-    cookieJar = PersistCookieJar(dir: tempPath);
-    print('initialized cookie jar');
-  } 
+  static Singleton get instance => _instance; 
 }
