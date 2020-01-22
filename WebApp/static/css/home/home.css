@@ -23,7 +23,7 @@ header{
     border: 2px solid black;
     padding: 20px;
     margin-left: 60px;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 form{
    
@@ -61,4 +61,8 @@ label {
 }
 .line{
     border-right: 2px solid black;
+}
+.side-menu1{
+    max-width: 30px;
+    background-color: black;
 }
