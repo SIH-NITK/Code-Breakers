@@ -141,7 +141,7 @@ class _TimelineState extends State<Timeline> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Yield : ${cropCycle.quantity}',
+                  'Yield : ${cropCycle.quantity} units',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.green,
