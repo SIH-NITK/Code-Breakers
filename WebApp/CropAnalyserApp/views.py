@@ -130,20 +130,25 @@ def generate_crop_cycles(dirname):
     with open('crop_cycles.txt', 'wb') as fp:
         pickle.dump(crop_cycles, fp)
 
-# Create your views here.
 @csrf_exempt
 def home(request):
 
     # return HttpResponse('Welcome')
     if request.method=="POST":
 
-        from_date=request.POST.get('from_date')
-        to_date=request.POST.get('to_date')
+        from_date=str(request.POST.get('from_date'))
+        to_date=str(request.POST.get('to_date'))
+        print(from_date)
+        # from_date=from_date.split()
+        if from_date == "None":
+            print('GET trigged')
+            from_date=str(request.GET.get('from_date'))
+            to_date=str(request.GET.get('to_date'))
         masking_method=request.POST.get('masking_method')
 
         from_date=from_date.split('-')
         to_date=to_date.split('-')
-
+        print('((((((((((((((((((((((((((((((9))))))))))))))))))))))))))))))',from_date,to_date)
         dict={
             'starting_month': from_date[1],
             'starting_year' : from_date[0],
@@ -157,18 +162,89 @@ def home(request):
             return render(request,'CropAnalyserApp/home.html')
         
         else:
-            generate_crop_cycles('/home/shashank/SIH/Code-Breakers/WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/')
-            # print(get_season_details(dict))
-            # json_data=json.dumps(get_season_details(dict))
+            # generate_crop_cycles('/home/shashank/SIH/Code-Breakers/WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/')
+            data_to_frontend = get_season_details(dict)
+            for i in range(len(data_to_frontend['crop_cycle'])):
+                data_to_frontend['crop_cycle'][i]['start_date']=data_to_frontend['crop_cycle'][i]['start_date'].strftime("%Y/%m/%d")
+                data_to_frontend['crop_cycle'][i]['end_date']=data_to_frontend['crop_cycle'][i]['end_date'].strftime("%Y/%m/%d")
+            print('@@@@@@@@@111111111111111111',data_to_frontend)
+            # json_data=json.dumps(data_to_frontend)
+            # print()
+            # print('@@@@@@@@@222222222222222222',json_data)
+            # return HttpResponse(json_data)
+
+            # json_loaded_data=json.loads(json_data)
+            
+            # json_data=json.dumps(data_to_frontend)
             # print(json_data)
             # json_loaded_data=json.loads(json_data)
-            # print(json__loaded_data)
+            # print('@@@@@@@@@3333333333333333',json_loaded_data)
+            # st = str(json_loaded_data)
+            # print('@@@@@@@@@44444444444444444',st)            
+            # return HttpResponse(json_data, content_type='application/json')
+            # requests.get('http://localhost:8080',params=get_season_details(dict))
 
-            requests.get('http://localhost:8080',params=get_season_details(dict))
 
 
-
-            return render(request,'CropAnalyserApp/home.html')
+            return render(request,'CropAnalyserApp/dashboard.html',{'data_to_frontend':data_to_frontend})
 
     return render(request,'CropAnalyserApp/home.html')
 
+@csrf_exempt
+def app_home(request):
+
+    # return HttpResponse('Welcome')
+    if request.method=="POST":
+
+        from_date=str(request.POST.get('from_date'))
+        to_date=str(request.POST.get('to_date'))
+        print(from_date)
+        if from_date == "None":
+            print('GET trigged')
+            from_date=str(request.GET.get('from_date'))
+            to_date=str(request.GET.get('to_date'))
+        masking_method=request.POST.get('masking_method')
+
+        from_date=from_date.split('-')
+        to_date=to_date.split('-')
+        print('((((((((((((((((((((((((((((((9))))))))))))))))))))))))))))))',from_date,to_date)
+        dict={
+            'starting_month': from_date[1],
+            'starting_year' : from_date[2],
+            'end_month' : to_date[1],
+            'end_year' : to_date[2]
+        }
+        print(dict)
+        if masking_method=="Self Select Farmland":
+
+            #return different page
+            return render(request,'CropAnalyserApp/app_home.html')
+        
+        else:
+            # generate_crop_cycles('/home/shashank/SIH/Code-Breakers/WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/')
+            data_to_frontend = get_season_details(dict)
+            for i in range(len(data_to_frontend['crop_cycle'])):
+                data_to_frontend['crop_cycle'][i]['start_date']=data_to_frontend['crop_cycle'][i]['start_date'].strftime("%Y/%m/%d")
+                data_to_frontend['crop_cycle'][i]['end_date']=data_to_frontend['crop_cycle'][i]['end_date'].strftime("%Y/%m/%d")
+            print('@@@@@@@@@111111111111111111',data_to_frontend)
+            json_data=json.dumps(data_to_frontend)
+            # print()
+            print('@@@@@@@@@222222222222222222',json_data)
+            # return HttpResponse(json_data)
+
+            # json_loaded_data=json.loads(json_data)
+            
+            # json_data=json.dumps(data_to_frontend)
+            # print(json_data)
+            # json_loaded_data=json.loads(json_data)
+            # print('@@@@@@@@@3333333333333333',json_loaded_data)
+            # st = str(json_loaded_data)
+            # print('@@@@@@@@@44444444444444444',st)            
+            return HttpResponse(json_data, content_type='application/json')
+            # requests.get('http://localhost:8080',params=get_season_details(dict))
+
+
+
+            # return render(request,'CropAnalyserApp/dashboard.html',{'data_to_frontend':data_to_frontend})
+
+    return render(request,'CropAnalyserApp/app_home.html')

@@ -1,0 +1,49 @@
+{% extends 'CropAnalyserApp/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="container" id="form">
+  <div class="row">
+      <div id="upload" class="col-sm-5">
+        <label for="avatar">Upload a file:</label>
+
+        <input type="file"
+               id="avatar" name="avatar"
+               accept="image/png, image/jpeg">
+        
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-5">
+        <form method="POST" action="">
+            <label>Select From Date</label>
+        <input type="date" name="from_date">
+        <label>Select To Date</label>
+        <input type="date" name="to_date">
+        <label>State:</label>
+            <select id="state" name="state">
+                <option value="000">-Select State-</option>
+            </select>
+        <br />
+        <label>District:</label>
+            <select id="district" name="district">
+                <option value="000">-Select District-</option>
+            </select>
+        <br />
+    
+    </div>
+    <div id="center" class="row">
+        <div  class="col-sm-12">
+            <input type="radio" name="masking_method" value="Self Select Farmland"> Self Select Farmland
+            <input type="radio" name="masking_method" value="Auto Detect Farmland"> Auto Detect Farmland
+            
+        </div>
+        <div class="col-sm-12">
+            <div class="submit"><input type="submit" value="Submit" ></div>
+        </div>
+        
+        </div>
+    </form> 
+  </div>
+    
+</div>
+<script type="text/javascript" src='{% static "/js/states_and_districts.js" %}'></script>
+{% endblock %}
