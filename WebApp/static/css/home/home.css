@@ -63,6 +63,24 @@ label {
     border-right: 2px solid black;
 }
 .side-menu1{
-    max-width: 30px;
+    max-width: 100px;
     background-color: black;
+    height: 100%;
+}
+
+.list{
+   
+    
+}
+.card {
+    padding: 40px;
+    margin: 30px;  
+   
+}
+
+.row {
+    justify-content: center;
+}
+.graphs{
+    margin-top: 100px;
 }

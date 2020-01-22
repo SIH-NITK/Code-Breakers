@@ -163,7 +163,7 @@ def home(request):
         
         else:
             # generate_crop_cycles('/home/shashank/SIH/Code-Breakers/WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/')
-            data_to_frontend = get_season_details(dict)
+            data_to_frontend = get_season_details(dicti)
             for i in range(len(data_to_frontend['crop_cycle'])):
                 data_to_frontend['crop_cycle'][i]['start_date']=data_to_frontend['crop_cycle'][i]['start_date'].strftime("%Y/%m/%d")
                 data_to_frontend['crop_cycle'][i]['end_date']=data_to_frontend['crop_cycle'][i]['end_date'].strftime("%Y/%m/%d")
@@ -186,7 +186,7 @@ def home(request):
 
 
 
-            return render(request,'CropAnalyserApp/dashboard.html',{'data_to_frontend':data_to_frontend})
+            return render(request,'CropAnalyserApp/analyze.html',{'data_to_frontend':data_to_frontend})
 
     return render(request,'CropAnalyserApp/home.html')
 
