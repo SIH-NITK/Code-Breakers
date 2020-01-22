@@ -159,12 +159,12 @@ class _TimelineState extends State<Timeline> {
     cropCycleWidgets.add(Padding(
       padding: EdgeInsets.all(8.0),
       child: Image(
-          width: 300, height: 300, image: AssetImage('assets/graph.jpeg')),
+          height: 200, image: AssetImage('assets/graph.jpeg')),
     ));
     cropCycleWidgets.add(Padding(
       padding: EdgeInsets.all(8.0),
       child: Image(
-          width: 300, height: 300, image: AssetImage('assets/histogram.jpeg')),
+          height: 200, image: AssetImage('assets/histogram.jpeg')),
     ));
     return SingleChildScrollView(
       child: Column(
