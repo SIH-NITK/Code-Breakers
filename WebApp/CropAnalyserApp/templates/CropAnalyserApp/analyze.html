@@ -1,0 +1,20 @@
+{% extends 'CropAnalyserApp/base.html' %}
+{% load staticfiles %}
+{% block content %}
+        <div class="side-menu1"></div>
+        <div class="side-menu2"></div>
+
+               Max_year <h1>{{ data_to_frontend.max_year }}</h1>
+               Min_year <h1>{{ data_to_frontend.min_year }}</h1>
+               Crop cyle <h1>{{ data_to_frontend.crop_cycle }}</h1><br>
+               {% for i in data_to_frontend.crop_cycle %}
+                        <h1>{{ i }}</h1>
+                        Start Date<h1>{{ i.start_date }}</h1>
+                        End Date<h1>{{ i.end_date }}</h1>
+                        Yield <h1>{{ i.yield }}</h1>
+               {% endfor %}
+
+                
+
+        <h1>{{ data_to_frontend.max_year }}</h1>
+{% endblock %}
