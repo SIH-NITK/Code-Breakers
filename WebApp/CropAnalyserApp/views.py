@@ -11,7 +11,6 @@ import numpy as np
 from datetime import datetime
 import time
 import pickle
-import requests
 import json
 
 def get_season_details(date_dict):
@@ -45,6 +44,8 @@ def get_season_details(date_dict):
             selected_crop_cycles['crop_cycle'].append(cycle)
     
     return selected_crop_cycles
+
+
 
 def determine_date(period1):
     y, m, half = period1.split('_')
@@ -145,17 +146,16 @@ def home(request):
             from_date=str(request.GET.get('from_date'))
             to_date=str(request.GET.get('to_date'))
         masking_method=request.POST.get('masking_method')
-
         from_date=from_date.split('-')
         to_date=to_date.split('-')
         print('((((((((((((((((((((((((((((((9))))))))))))))))))))))))))))))',from_date,to_date)
-        dict={
+        dicti={
             'starting_month': from_date[1],
             'starting_year' : from_date[0],
             'end_month' : to_date[1],
             'end_year' : to_date[0]
         }
-        print(dict)
+        print(dicti)
         if masking_method=="Self Select Farmland":
 
             #return different page
