@@ -186,6 +186,14 @@ def home(request):
             # return HttpResponse(json_data, content_type='application/json')
             # requests.get('http://localhost:8080',params=get_season_details(dict))
 
+            for i in data_to_frontend['crop_cycle']:
+                print(i['imgs_path'])
+                for j in i['imgs_path']:
+                    j=j.split('.')
+                    j[1]='jpg'
+                    print(j)
+                    i['imgs_path']=[j[0]+'.'+'jpg']
+
 
 
             return render(request,'CropAnalyserApp/analyze.html',{'data_to_frontend':data_to_frontend})
