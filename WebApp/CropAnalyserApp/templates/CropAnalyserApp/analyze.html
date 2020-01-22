@@ -1,0 +1,19 @@
+{% extends 'CropAnalyserApp/base.html' %}
+{% load static %}
+{% block content %}
+        <div class="side-menu1"></div>
+        <div class="side-menu2"></div>
+
+
+        {% for i in data_to_frontend.crop_cycle %}
+               Start Date <h1>{{i.start_date}}</h1>
+               End Date<h1>{{ i.end_date }}</h1>
+               Yield <h1>{{ i.yield }}</h1>
+               {% for image in i.imgs_path %}
+                        
+                       Image <img src='{%static "/images/Clipped_NDVI/{{ image }}" %}'><br>
+               {% endfor %}
+        {% endfor %}
+
+
+{% endblock %}

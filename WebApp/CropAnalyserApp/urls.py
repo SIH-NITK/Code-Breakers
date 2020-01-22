@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
 
-    url('',views.home),
+    url(r'^home$',views.home),
+    url(r'^app_home$',views.app_home),
 ]

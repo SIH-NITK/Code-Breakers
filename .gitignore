@@ -1,0 +1,6 @@
+*.pyc
+WebApp/CropAnalyser/__pycache__/*.pyc
+WebApp/CropAnalyserApp/__pycache__/*.pyc
+WebApp/CropAnalyser/migrations/__pycache__/*.pyc
+WebApp/CropAnalyserApp/templates/CropAnalyserApp/Clipped_NDVI/*.tif
+WebApp/static/images/Clipped_NDVI/*.tif

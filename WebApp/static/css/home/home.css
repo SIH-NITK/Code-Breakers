@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: black;
+    color: whitesmoke;
+    padding: 20px;
+
+}
+
+.header-left{
+    font-weight: bolder;
+    font-size: 30px;
+}
+#form{
+    margin: 20px;
+    align-items: center;
+    border: 2px solid black;
+    padding: 20px;
+    margin-left: 60px;
+    border-radius: 10px;
+}
+form{
+   
+    padding: 20px;
+    font-size: medium;
+    font-weight: bold;
+    
+    border-radius: 5px;
+}
+
+select {
+    padding: 5px;
+}
+.submit{
+   text-align: center;
+}
+
+#center{
+    text-align: center;
+    font-weight: bold;
+}
+
+#center input[type=submit]{
+    padding: 5px;
+    width: 50%;
+    background-color: rgb(25, 211, 202);
+}
+label {
+    display: block;
+    
+}
+#upload{
+    font-weight: bolder;
+    font-size: medium;
+}
+.line{
+    border-right: 2px solid black;
+}
+.side-menu1{
+    max-width: 30px;
+    background-color: black;
+}
